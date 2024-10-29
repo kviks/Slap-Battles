@@ -1432,7 +1432,7 @@ if not game:IsLoaded() then
 	
 	local BadgesSection = Tab4:AddSection({Name = "Badges Section"})
 
-	Tab3:AddButton({
+	Tab4:AddButton({
 		Name = "Get Starter Badges",
 		Callback = function()
 		fireclickdetector(game.Workspace.Lobby.Scene.knofe.ClickDetector)
@@ -1590,7 +1590,7 @@ if not game:IsLoaded() then
 		end    
 	})
 
-	Tab3:AddToggle({
+	Tab4:AddToggle({
 		Name = "Siphon Orb Farm",
 		Default = false,
 		Callback = function(Value)
