@@ -1918,14 +1918,6 @@ end
 end    
 })
 
-AntiJack = Tab2:AddToggle({
-Name = "Anti Hallow Jack",
-Default = false,
-Callback = function(Value)
-game.Players.LocalPlayer.PlayerScripts.HallowJackAbilities.Disabled = Value
-end    
-})
-
 AntiBooster = Tab2:AddToggle({
 Name = "Anti Booster",
 Default = false,
@@ -1955,26 +1947,6 @@ if game.Players.LocalPlayer.PlayerGui:FindFirstChild("SquidInk") then
 game.Players.LocalPlayer.PlayerGui.SquidInk.Enabled = false
 end
 task.wait()
-end
-end    
-})
-
-AntiConveyor = Tab2:AddToggle({
-Name = "Anti Conveyor",
-Default = false,
-Callback = function(Value)
-game.Players.LocalPlayer.PlayerScripts.ConveyorVictimized.Disabled = Value
-end    
-})
-
-AntiNightmareAndPotion = Tab2:AddToggle({
-Name = "Anti Nightmare",
-Default = false,
-Callback = function(Value)
-if Value == true then
-game.Players.LocalPlayer.PlayerScripts.VFXListener.NightmareEffect.Parent = game.Lighting
-else
-game.Players.LocalPlayer.PlayerScripts.VFXListener.NightmareEffect.Parent = game.Players.LocalPlayer.PlayerScripts.VFXListener
 end
 end    
 })
@@ -2034,14 +2006,6 @@ end
 end
 task.wait()
 end
-end    
-})
-
-AntiReda = Tab2:AddToggle({
-Name = "Anti Redacted",
-Default = false,
-Callback = function(Value)
-game.Players.LocalPlayer.PlayerScripts.Well.Disabled = Value
 end    
 })
 
