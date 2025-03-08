@@ -299,7 +299,6 @@ ServerPlayer:Set("Players: " .. #game.Players:GetPlayers() .. " / " .. game.Play
 Glove:Set("My Glove: " .. game.Players.LocalPlayer.leaderstats.Glove.Value)
 ViewAgeServer:Set(game.Workspace.Lobby.ServerAge.Text.SurfaceGui.TextLabel.Text)
 CodeKeypad:Set("Keypad Code: " .. tostring((#game.Players:GetPlayers()) * 25 + 1100 - 7))
-GraveTimer:Set("Next Grave Teleport: " .. game.workspace.Halloween.SignStuff.Sign.SG1.T.Text)
 
 KeypadSpawn:Set("Keypad Spawned: " .. (game.Workspace:FindFirstChild("Keypad") and "Yes" or "No"))
 ToolboxSpawn:Set("Toolbox Spawned: " .. (game.Workspace:FindFirstChild("Toolbox") and "Yes" or "No"))
@@ -337,17 +336,6 @@ end
 end
 })
 
-if not isHalloween then
-print("no halloween sweetie")
-else
-local HALLOWEENSECTION = Tab:AddSection({Name = "ONLY IN HALLOWEEN [2024]"})
-GraveTimer = Tab:AddLabel("Next Grave Teleport: "..game.workspace.Halloween.SignStuff.Sign.SG1.T.Text)
-if not game.Workspace:FindFirstChild("Gravestone") then
-GraveSpawned = Tab:AddLabel("Grave Spawned: No")
-else
-GraveSpawned = Tab:AddLabel("Grave Spawned: Yes")
-end
-end
 local PlayerSection = Tab:AddSection({Name = "Player"})
 CheckSlap = Tab:AddLabel("My Slaps: "..game.Players.LocalPlayer.leaderstats.Slaps.Value)
 Glove = Tab:AddLabel("My Glove: "..game.Players.LocalPlayer.leaderstats.Glove.Value)
@@ -388,51 +376,6 @@ else
 MaterializeORBSpawn = Tab:AddLabel("Materialize Orb Spawned: Yes")
 end
 local TeleportsSection = Tab5:AddSection({Name = "Secret Teleporting Tool *shh*"})
-local EventsSection = Tab1:AddSection({Name = "Halloween"})
-
-Tab1:AddToggle({
-Name = "Auto Collect Candies",
-Default = false,
-Callback = function(Value)
-CandyCornsFarm = Value
-if not isHalloween then
-OrionLib:MakeNotification({Name = "Information",Content = "Today is not Halloween.",Image = "rbxassetid://11176073563",Time = 5})
-else
-while CandyCornsFarm do
-for i, v in pairs(game.Workspace.CandyCorns:GetChildren()) do
-if game.Players.LocalPlayer.Character:FindFirstChild("Head") and v:FindFirstChildWhichIsA("TouchTransmitter") then
-firetouchinterest(game.Players.LocalPlayer.Character.Head, v, 0)
-firetouchinterest(game.Players.LocalPlayer.Character.Head, v, 1)
-end
-end
-task.wait()
-end
-end
-end    
-})
-Tab1:AddButton({
-Name = "Teleport To Grave",
-Callback = function()
-if not isHalloween then
-OrionLib:MakeNotification({Name = "Information",Content = "Today is not Halloween.",Image = "rbxassetid://11176073563",Time = 5})
-else
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(408, 360, -23)
-end
-end    
-})
-
-local PSection = PTab:AddSection({Name = "Local Player Settings"})
-local PSection = Tab6:AddSection({Name = "Misc"})
-local cSelection = CrasherTab:AddSection({Name = "mega funni phone explode functions"})
-
-PTab:AddButton({
-Name = "Reset Character",
-Callback = function()
-if game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
-game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health = 0
-end
-end
-})
 
 PTab:AddSlider({
 Name = "Walk Speed",
@@ -942,39 +885,7 @@ end
 end    
 })
 
-AU = Tab1:AddToggle({
-Name = "Farm Grave",
-Default = false,
-Callback = function(Value)
-_G.FG = Value
-if not isHalloween then
-OrionLib:MakeNotification({Name = "Information",Content = "Today is not Halloween.",Image = "rbxassetid://11176073563",Time = 5})
-else
-while _G.FG do
-local textValue = game.Players.LocalPlayer.Character.Head.Nametag.TextLabel.Text
-local killCount = tonumber(textValue)
-local gravestone = game.Workspace:FindFirstChild("Gravestone")
-if game.Players.LocalPlayer.leaderstats.Glove.Value == "Killstreak" then
-if killCount and killCount == 10 then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace["UNKNOWN"].CFrame * CFrame.new(0,10,0)
-if gravestone then
-	fireclickdetector(gravestone.ClickDetector)
-end
-else
-OrionLib:MakeNotification({Name = "Information",Content = "You don't have 10 Kills.",Image = "rbxassetid://11176073563",Time = 5})
-task.wait(0.5)
-AU:Set(false)
-end
-else
-OrionLib:MakeNotification({Name = "Information",Content = "You don't have Killstreak Equipped.",Image = "rbxassetid://11176073563",Time = 5})
-task.wait(0.5)
-AU:Set(false)
-end
-task.wait()
-end  
-end
-end
-})
+
 local ChristmasSection = Tab1:AddSection({Name = "Christmas"})
 Tab1:AddToggle({
 Name = "Auto Gift",
